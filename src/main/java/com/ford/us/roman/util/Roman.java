@@ -28,13 +28,7 @@ public final class Roman {
         return map;
     }
 
-
-    private static final Set<String> ROMAN_DIV_STRING =
-            Set.of();
-
-
     private static final Map<Character, Integer>
-
             ROMAN_LETTER_MAP = Map.of(
             'I', 1, 'V', 5, 'X', 10,
             'L', 50, 'C', 100, 'D', 500,
@@ -46,18 +40,14 @@ public final class Roman {
 
     }
 
-
-    /**
-     * @param intput
-     * @return
-     */
-    public static String toRoman(Integer intput) {
-        validate(intput);
+    //Convert Integer to Roman number
+    public static String toRoman(Integer input) {
+        validate(input);
         StringBuilder rString = new StringBuilder();
         for (var eachVal : ROMAN_INT_VALUES.entrySet()) {
-            while (intput >= eachVal.getKey()) {
+            while (input >= eachVal.getKey()) {
                 rString.append(eachVal.getValue());
-                intput = intput - eachVal.getKey();
+                input = input - eachVal.getKey();
             }
         }
 
@@ -73,10 +63,6 @@ public final class Roman {
         }
     }
 
-    /**
-     * @param romanString
-     * @return
-     */
     public static Integer toInteger(String romanString) {
 
         validate(romanString);
@@ -84,8 +70,7 @@ public final class Roman {
 
     }
 
-
-    //XI
+    //convert roman number to Integer
     private static Integer convertStringToInteger(String romanString) {
         int length = romanString.length();
         int startValue = 0;
@@ -100,7 +85,6 @@ public final class Roman {
             startValue = integerValue;
 
         }
-
         return convertedValue;
     }
 
@@ -112,7 +96,6 @@ public final class Roman {
         }
 
         //invalid roman chars.
-
         OptionalInt invalidRomanLetter = romanString.chars()
                 .filter(c -> !ALLOWED_ROMAN_CHARS.contains((char) c))
                 .findFirst();
