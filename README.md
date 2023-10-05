@@ -9,7 +9,7 @@ Roman Util ensures the following validation while converting Integer to Roman
 Roman Util ensures the following validation while converting Roman to Integer
 
 1.	Roman String should be valid characters and never be null also non empty.
-2.	Negative case, it would throw Invalid Input Exception exception
+2.	Negative case, it would throw Invalid Input Exception
 
 To Run:
 Cmd Java:>RomanUtilMain XI
