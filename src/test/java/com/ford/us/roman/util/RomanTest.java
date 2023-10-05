@@ -30,7 +30,7 @@ class RomanTest {
 
 
     @ParameterizedTest()
-    @ValueSource(strings = { ""})
+    @ValueSource(strings = { "","abc"})
     @NullSource
     void convertRomanToInteger_failure(String paramInput)
     {
