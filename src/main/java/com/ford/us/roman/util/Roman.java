@@ -33,11 +33,31 @@ public final class Roman {
     public static Integer toInteger(String romanString) {
 
         validate(romanString);
-        return -1;
+        return convertStringToInteger(romanString);
+
+    }
+
+
+    //XI
+    private static Integer convertStringToInteger(String romanString) {
+        int length = romanString.length();
+        int startValue=Integer.MIN_VALUE;
+        Integer convertedValue=0;
+
+        for (var index = length-1;  index>=0;  index--) {
+            Character x=romanString.charAt(index);
+            Integer integerValue = ROMAN_LETTER_MAP.get(x);
+            convertedValue=integerValue>startValue?convertedValue+integerValue:
+                    convertedValue-integerValue;
+
+            startValue=integerValue;
+
+        }
+
+        return convertedValue;
     }
 
     private static void validate(String romanString) {
-
 
         if (isNull(romanString) || romanString.isBlank()) {
             //dont log any error as its util method validation
@@ -46,10 +66,11 @@ public final class Roman {
 
         //invalid roman chars.
 
-        OptionalInt invalidRomanLetter = romanString.chars().filter(c -> !ALLOWED_ROMAN_CHARS.contains(c))
+        OptionalInt invalidRomanLetter = romanString.chars()
+                .filter(c -> !ALLOWED_ROMAN_CHARS.contains((char)c))
                 .findFirst();
 
-        if (!invalidRomanLetter.isEmpty())
+        if (invalidRomanLetter.isPresent())
         {
             throw new InvalidInputException(INVALID_INPUT.formatted(romanString));
         }
