@@ -1,6 +1,11 @@
 package com.ford.us.roman.util;
 
-public interface RomanConstant {
+public final class RomanConstant {
 
-    static String INVALID_INPUT="{} Invalid Input ";
+    private RomanConstant()
+    {
+
+    }
+
+    public static String INVALID_INPUT="{} Invalid Input ";
 }

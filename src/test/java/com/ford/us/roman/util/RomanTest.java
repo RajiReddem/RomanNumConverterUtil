@@ -25,11 +25,10 @@ class RomanTest {
     }
 
     @Test
-    @ParameterizedTest
     void convertRomanToInteger_success()
     {
         String input="XI";
-        assertEquals(Roman.toInteger(input),11);
+        assertEquals(11,Roman.toInteger(input));
     }
 
     @ParameterizedTest
