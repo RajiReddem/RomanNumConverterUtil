@@ -4,6 +4,9 @@ import com.ford.us.roman.exception.InvalidInputException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,14 +28,17 @@ class RomanTest {
     }
 
 
-    @Test
-    void convertRomanToInteger_failure()
+
+    @ParameterizedTest()
+    @ValueSource(strings = { ""})
+    @NullSource
+    void convertRomanToInteger_failure(String paramInput)
     {
-        String input="MMMM";
-        InvalidInputException invalidInputException = assertThrowsExactly(InvalidInputException.class, () -> Roman.toInteger(input));
+
+        InvalidInputException invalidInputException = assertThrowsExactly(InvalidInputException.class, () -> Roman.toInteger(paramInput));
 
         String message = invalidInputException.getMessage();
 
-        assertEquals("{} Invalid Input ".formatted(input),message);
+        assertEquals("{} Invalid Input ".formatted(paramInput),message);
     }
 }
