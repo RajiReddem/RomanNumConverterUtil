@@ -41,13 +41,13 @@ public final class Roman {
     //XI
     private static Integer convertStringToInteger(String romanString) {
         int length = romanString.length();
-        int startValue=Integer.MIN_VALUE;
+        int startValue=0;
         Integer convertedValue=0;
 
         for (var index = length-1;  index>=0;  index--) {
             Character x=romanString.charAt(index);
             Integer integerValue = ROMAN_LETTER_MAP.get(x);
-            convertedValue=integerValue>startValue?convertedValue+integerValue:
+            convertedValue=integerValue>=startValue?convertedValue+integerValue:
                     convertedValue-integerValue;
 
             startValue=integerValue;
