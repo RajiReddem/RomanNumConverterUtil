@@ -24,6 +24,15 @@ class RomanTest {
     void tearDown() {
     }
 
+
+
+
+    @Test
+    void convertIntegerToRoman_success()
+    {
+        Integer input=102;
+        assertEquals("CII",Roman.toRoman(input));
+    }
     @Test
     void convertRomanToInteger_success()
     {
@@ -62,4 +71,6 @@ class RomanTest {
                 "LI", 51,
                 "IL", 49));
     }
+
+
 }
